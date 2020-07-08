@@ -1,0 +1,56 @@
+/* components/menu/menu.wxss */
+.bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  z-index: 300;
+  display: flex;
+}
+
+.left {
+  background-color: white;
+  height: 100%;
+}
+
+.right {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+}
+
+.top{
+  background-color: #fe6243;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 50rpx 0;
+}
+.top image{
+  width: 200rpx;
+  height: 170rpx;
+}
+
+.top text{
+  font-size: 32rpx;
+  color: white;
+  margin-top: 20rpx;
+}
+.item{
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.item image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.item text{
+  font-size: 28rpx;
+  color: #2c2c2c;
+  margin-left: 60rpx;
+}
+.item-hover{
+  background-color: rgba(254, 98, 67, 0.05);
+}

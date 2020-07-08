@@ -1,0 +1,3 @@
+<!--pages/home/home.wxml-->
+<main-navi title="首页"></main-navi>
+<text>pages/home/home.wxml</text>
