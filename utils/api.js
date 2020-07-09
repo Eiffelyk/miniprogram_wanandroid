@@ -8,9 +8,12 @@ let login =(params) => wxRequest.post('/user/login',params);
 let logout = () => wxRequest.get('/user/logout/json');
 //注册
 let register = (params) => wxRequest.post('/user/register',params);
+//体系
+let tree =()=>wxRequest.get('/tree/json');
 module.exports = {
   chapter,
   login,
   logout,
   register,
+  tree,
 }

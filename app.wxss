@@ -8,3 +8,10 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.page{
+  background-color:white;
+}
+.item-hover{
+  background-color: rgba(254, 98, 67, 0.05);
+}

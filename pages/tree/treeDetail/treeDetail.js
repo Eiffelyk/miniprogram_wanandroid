@@ -1,20 +1,33 @@
-const api = require("../../utils/api");
-
-// pages/tree/tree.js
+// pages/tree/treeDetail/treeDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    treeList:[]
+    categoryList:[],
+    articleList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getTreeList()
+    wx.setNavigationBarTitle({
+      title: options.name,
+    })
+    let categoryList = JSON.parse(decodeURIComponent(options.categoryList))
+    categoryList.forEach(item => {
+      this.data.articleList.push({
+        data:[],
+        curPage:0
+      })
+    });
+    this.setData({
+      categoryList:categoryList,
+      articleList:this.data.articleList
+    })
+    //todo get articleList
   },
 
   /**
@@ -49,7 +62,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.getTreeList()
+
   },
 
   /**
@@ -64,30 +77,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  onItemClick:function(event){
-    console.log('onItemClick');
-    let children = event.currentTarget.dataset.children;
-    let name = event.currentTarget.dataset.name;
-    let categoryList = []
-    children.forEach(element => {
-      categoryList.push({
-        id: element.id,
-        name:element.name
-      })
-    });
-    wx.navigateTo({
-      url: '/pages/tree/treeDetail/treeDetail?categoryList='+encodeURIComponent(JSON.stringify(categoryList))+'&name='+name,
-    })
-  },
-  getTreeList:function(){
-    api.tree().then(data=>{
-      this.setData({
-        treeList:data
-      })
-    }).catch(res=>{
-
-    });
-  },
+  }
 })

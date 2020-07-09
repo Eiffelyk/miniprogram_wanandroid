@@ -1,1 +1,39 @@
 /* pages/tree/tree.wxss */
+.tree {
+  padding: 20rpx;
+  border-bottom: 10rpx #eeeef5 solid;
+  display: flex;
+  align-items: center;
+}
+image{
+  width: 30rpx;
+  height:30rpx;
+}
+.content{
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.content .title{
+  color: #2c2c2c;
+  font-size: 32rpx;
+}
+
+.content .children{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content .item{
+  font-size: 26rpx;
+  color: #8a8a8a;
+  margin-right: 30rpx;
+  margin-top: 10rpx;
+}
+
+.tree {
+  padding: 20rpx;
+  border-bottom: 10rpx #eeeef5 solid;
+  display: flex;
+  align-items: center;
+}
