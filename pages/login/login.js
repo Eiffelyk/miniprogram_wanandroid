@@ -69,11 +69,9 @@ Page({
 
   },
   inputName: function (event) {
-    console.log(event.detail.value);
     this.data.name = event.detail.value
   },
   inputPassword: function (event) {
-    console.log(event.detail.value);
     this.data.password = event.detail.value
   },
   nameBindFocus: function () {
@@ -127,6 +125,8 @@ Page({
     })
   },
   register: function () {
-    util.toast('register')
+    wx.navigateTo({
+      url: '/pages/register/register',
+    })
   }
 })

@@ -2,7 +2,7 @@ let app = getApp();
 
 function request(method, url, param, isShowLoading) {
   //返回一个Promise对象
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     if (isShowLoading) {
       wx.showLoading({
         title: '加载中...',
@@ -17,7 +17,7 @@ function request(method, url, param, isShowLoading) {
         'content-type': 'application/x-www-form-urlencoded',
         'cookie': wx.getStorageSync('cookie')
       },
-      success: function(res) {
+      success: function (res) {
         // 保存登录返回的cookie
         if (url.indexOf('login') != -1) {
           wx.setStorage({
@@ -26,6 +26,7 @@ function request(method, url, param, isShowLoading) {
           })
         }
         console.log('接口：' + url, ' 参数：', param, '\n返回值：', res.data)
+        console.log(res.header)
         if (isShowLoading) {
           wx.hideLoading();
         }
@@ -40,7 +41,7 @@ function request(method, url, param, isShowLoading) {
           reject(res.data);
         }
       },
-      fail: function(res) {
+      fail: function (res) {
         console.error(res);
         wx.hideLoading();
         wx.showToast({

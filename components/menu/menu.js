@@ -1,5 +1,6 @@
 // pages/menu/menu.js
 let util = require('../../utils/util.js')
+const api = require('../../utils/api.js')
 let app = getApp()
 Component({
   /**
@@ -30,7 +31,7 @@ Component({
       })
     },
     toCollectian: function () {
-      if (this.data.name=='登录') {
+      if (this.data.name == '登录') {
         util.toast('请先登录')
         return
       }
@@ -43,7 +44,7 @@ Component({
       util.toast('关于')
     },
     onLogout: function () {
-      if ( this.data.name == '登录') {
+      if (this.data.name == '登录') {
         return
       }
       wx.showModal({
@@ -52,23 +53,36 @@ Component({
         content: '您确认要退出吗？',
         showCancel: true,
         title: '提示',
-        success: (result) => {},
+        success: (result) => {
+          api.logout().then(data => {
+            util.toast('logout success');
+            wx.clearStorage();
+            this.setData({
+              name: '登录'
+            });
+            setTimeout(() => {
+              this.onCloseMenu();
+            }, 300);
+          }).catch(res => {
+
+          });
+        },
         fail: (res) => {},
         complete: (res) => {},
       })
     },
     onLogin: function () {
-      if ( this.data.name != '登录') {
+      if (this.data.name != '登录') {
         return
       }
       let that = this;
       wx.navigateTo({
         url: '/pages/login/login',
-        events:{
-          loginSuccess:(data)=> {
+        events: {
+          loginSuccess: (data) => {
             console.log('走到这里');
             that.setData({
-              name:data.data
+              name: data.data
             })
           }
         }

@@ -1,0 +1,30 @@
+/* pages/register/register.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+  padding: 180rpx 100rpx 0;
+  align-items: center;
+  box-sizing: border-box;
+}
+input{
+  width: 100%;
+  height: 50rpx;
+  padding-bottom: 10rpx;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  border-bottom: 1rpx #2c2c2c solid;
+}
+.register{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 20rpx;
+  font-size: 32rpx;
+  color: white;
+  text-align: center;
+  margin-top: 100rpx;
+  background-color: #fe6243;
+}
+.hover{
+  background-color:#db553a;
+}
