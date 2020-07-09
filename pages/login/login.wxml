@@ -1,0 +1,5 @@
+<!--pages/login/login.wxml-->
+<input class="{{nameFocus?'input-active':''}}" placeholder="用户名" maxlength="20" focus="true" bindfocus="nameBindFocus" bindinput="inputName"></input>
+<input class="{{passwordFocus?'input-active':''}}" password="true" placeholder="密码" maxlength="20" bindfocus="passwordBindFocus" bindinput="inputPassword"></input>
+<view class="login" hover-class="hover" hover-start-time="0" hover-stay-time="100" bindtap="login">登录</view>
+<text class="register" bindtap="register">注册</text>

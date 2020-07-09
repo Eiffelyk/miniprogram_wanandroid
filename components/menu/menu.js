@@ -61,7 +61,18 @@ Component({
       if ( this.data.name != '登录') {
         return
       }
-      util.toast('去登录')
+      let that = this;
+      wx.navigateTo({
+        url: '/pages/login/login',
+        events:{
+          loginSuccess:(data)=> {
+            console.log('走到这里');
+            that.setData({
+              name:data.data
+            })
+          }
+        }
+      })
     }
   },
   pageLifetimes: {

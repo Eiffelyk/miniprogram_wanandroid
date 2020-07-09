@@ -1,23 +1,26 @@
 // pages/chapter/chapter.js
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-
-  },
-
+let api = require('../../utils/api.js')
+Page({
   /**
    * 组件的初始数据
    */
   data: {
 
   },
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
+  onLoad: function (options) {
+    this.getChapterList();
+  },
+  getChapterList: function () {
+    api.chapter().then(data => {
+      this.setData({
+        chapterList: data
+      });
+      wx.stopPullDownRefresh();
+    }).catch(res => {
+      wx.stopPullDownRefresh();
+    })
+  },
+  onPullDownRefresh: function () {
+    this.getChapterList();
   }
 })
