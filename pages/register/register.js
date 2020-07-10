@@ -115,21 +115,26 @@ Page({
   inputPassword2: function (event) {
     this.data.password2 = event.detail.value
   },
-  nameBindfoucs: function () {
+  nameBindfocus: function () {
+    console.log('nameBindfoucs');
     this.setData({
       nameFocus: true,
       passwordFocus: false,
       password2Focus: false,
     })
   },
-  passwordBindfoucs: function () {
+  passwordBindfocus: function () {
+    console.log('passwordBindfoucs');
+    
     this.setData({
       nameFocus: false,
       passwordFocus: true,
       password2Focus: false,
     })
   },
-  password2Bindfoucs: function () {
+  password2Bindfocus: function () {
+    console.log('password2Bindfoucs');
+    
     this.setData({
       nameFocus: false,
       passwordFocus: false,

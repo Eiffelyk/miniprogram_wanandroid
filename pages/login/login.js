@@ -80,7 +80,7 @@ Page({
       passwordFocus: false
     })
   },
-  passwordFocus: function () {
+  passwordBindFocus: function () {
     this.setData({
       nameFocus: false,
       passwordFocus: true
