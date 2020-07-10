@@ -18,3 +18,42 @@
 .input-active{
   border-bottom: 1rpx #fe6243 solid;
 }
+
+/* 文章item（公众号,收藏）*/
+.article {
+  padding: 20rpx;
+  height: 180rpx;
+  box-sizing: border-box;
+  position: relative;
+  border-bottom: 1rpx #dcdcdc solid;
+}
+
+.article .title {
+  font-size: 32rpx;
+  color: #2c2c2c;
+  word-wrap: break-word;
+  white-space: normal !important;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.article .bottom {
+  position: absolute;
+  bottom: 20rpx;
+}
+
+.article .date {
+  font-size: 28rpx;
+  color: #bfbfbf;
+}
+
+.article .collect {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+}

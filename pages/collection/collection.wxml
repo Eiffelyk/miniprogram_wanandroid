@@ -1,0 +1,15 @@
+<!--pages/collection/collection.wxml-->
+<wxs src="../../utils/wxs/util.wxs" module="util" />
+<block wx:for="{{collectionList}}" wx:key="index">
+	<view class="article" bindtap="onItemClick" datalink-="item.link" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">
+			<text class="title">{{util.filterTag(item.title)}}</text>
+			<view class="bottom">
+				<text class="date">{{item.niceDate}}</text>
+			</view>
+		<image class="collect" src="{{'../../images/like_fill.png'}}" catchtap="onClickCollect" data-id="{{item.id}}" data-originId="{{item.originId}}" data-index="{{index}}"></image>
+	</view>
+</block>
+<view class="status" wx:if="{{collectionList.length==0}}">
+	<image src="../../images/empty.png"></image>
+	<text>大梦一场空</text>
+</view>

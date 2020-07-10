@@ -21,7 +21,7 @@ let unCollectOutCollectList = (id) => wxRequest.post(`/lg/uncollect_originId/${i
 //取消收藏（收藏列表中）
 let unCollectInCollectList = (id, params) => wxRequest.post(`/lg/uncollect/${id}/json`, params);
 //收藏列表
-let collectList = (pageIndex) => wxRequest.get(`lg/collect/list/${pageIndex}/json`);
+let collectList = (pageIndex) => wxRequest.get(`/lg/collect/list/${pageIndex}/json`);
 //收藏操作
 let doCollect = (id = null, params = null, isCollect) => {
   if (!wx.getStorageSync('name')) {

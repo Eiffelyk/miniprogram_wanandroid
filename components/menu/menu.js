@@ -31,11 +31,13 @@ Component({
       })
     },
     toCollectian: function () {
-      if (this.data.name == '登录') {
+      if (!wx.getStorageSync('name')) {
         util.toast('请先登录')
         return
       }
-      util.toast('进入收藏页面')
+      wx.navigateTo({
+        url: '../../pages/collection/collection',
+      })
     },
     toSetting: function () {
       util.toast('设置')
@@ -44,7 +46,7 @@ Component({
       util.toast('关于')
     },
     onLogout: function () {
-      if (this.data.name == '登录') {
+      if (!wx.getStorageSync('name')) {
         return
       }
       wx.showModal({
@@ -72,7 +74,7 @@ Component({
       })
     },
     onLogin: function () {
-      if (this.data.name != '登录') {
+      if (wx.getStorageSync('name')) {
         return
       }
       let that = this;
