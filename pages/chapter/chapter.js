@@ -20,6 +20,13 @@ Page({
       wx.stopPullDownRefresh();
     })
   },
+  onItemClick: function (event) {
+    let chapterId = event.currentTarget.dataset.id
+    let name = event.currentTarget.dataset.name
+    wx.navigateTo({
+      url: '/pages/chapter/chapterDetail/chapterDetail?id=' + chapterId + '&name=' + name,
+    })
+  },
   onPullDownRefresh: function () {
     this.getChapterList();
   }

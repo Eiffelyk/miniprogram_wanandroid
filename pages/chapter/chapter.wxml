@@ -1,5 +1,5 @@
 <!--pages/chapter/chapter.wxml-->
 <main-navi title="公众号"></main-navi>
 <view class="chapter">
-	<view class="item" wx:for="{{chapterList}}" wx:key="index" data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</view>
+	<view class="item" wx:for="{{chapterList}}" wx:key="index" bindtap="onItemClick" data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</view>
 </view>
