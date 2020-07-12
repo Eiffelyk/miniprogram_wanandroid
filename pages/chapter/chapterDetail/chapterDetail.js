@@ -39,7 +39,7 @@ Page({
       })
   },
   onClickCollect: function (event) {
-    //id,collect
+    //id,collect,index
     let id = event.currentTarget.dataset.id
     let isCollect = event.currentTarget.dataset.collect
     let index = event.currentTarget.dataset.index

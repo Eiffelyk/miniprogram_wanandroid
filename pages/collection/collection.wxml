@@ -4,6 +4,8 @@
 	<view class="article" bindtap="onItemClick" datalink-="item.link" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">
 			<text class="title">{{util.filterTag(item.title)}}</text>
 			<view class="bottom">
+				<text class="type" wx:if="{{item.tags.length>0}}">{{item.tags[0].name}}</text>
+      	<text class="author" wx:if="{{item.author!=''}}">{{item.author}}</text>
 				<text class="date">{{item.niceDate}}</text>
 			</view>
 		<image class="collect" src="{{'../../images/like_fill.png'}}" catchtap="onClickCollect" data-id="{{item.id}}" data-originId="{{item.originId}}" data-index="{{index}}"></image>

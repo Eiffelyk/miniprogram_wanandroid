@@ -44,9 +44,24 @@
   position: absolute;
   bottom: 20rpx;
 }
-
+.article .type{
+  font-size: 26rpx;
+  color: #51c422;
+  border:1rpx #51c422 solid;
+  border-radius: 8rpx;
+  padding: 3rpx 5rpx;
+  margin-right: 30rpx;
+}
+.article .author{
+  font-size: 26rpx;
+  color: #225bc4;
+  border:1rpx #225bc4 solid;
+  border-radius: 8rpx;
+  padding: 5rpx;
+  margin-right: 30rpx;
+}
 .article .date {
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #bfbfbf;
 }
 

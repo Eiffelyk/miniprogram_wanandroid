@@ -1,5 +1,9 @@
 const wxRequest = require('../utils/wxRequest.js');
 const util = require('./util.js');
+//首页banner 
+let banner = () => wxRequest.get('/banner/json');
+//首页文章列表
+let articleList=(pageIndex)=>wxRequest.get(`/article/list/${pageIndex}/json`);
 //获取公众号列表
 let chapter = () => wxRequest.get('/wxarticle/chapters/json');
 //查看某个公众号历史数据｜｜在某个公众号中搜索历史文章
@@ -87,6 +91,8 @@ let cancelCollect = (id, params = null) => {
   })
 };
 module.exports = {
+  banner,
+  articleList,
   chapter,
   login,
   logout,
