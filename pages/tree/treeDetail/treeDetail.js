@@ -11,10 +11,10 @@ Page({
   data: {
     categoryItems: [],
     scrollWidth: 0,
+    scrollLeft: 0,
     categoryList: [],
     swiperIndex: 0,
-    articleList: [],
-    scrollLeft: 0
+    articleList: []
   },
 
   /**
@@ -42,7 +42,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    // 计算每个item测尺寸
+    util.getViewSize('.item')
+      .then(res => {
+        res.forEach((item) => {
+          this.data.categoryItems.push(item);
+        })
+      })
 
+    // 计算分类滚动区域尺寸
+    util.getViewSize('.category')
+      .then(res => {
+        this.data.scrollWidth = res[0].width;
+      })
   },
 
   /**
@@ -112,9 +124,12 @@ Page({
     })
   },
   onSwiperChange: function (event) {
-    let index = event.detail.current
+    let index = event.detail.current;
+    let item = this.data.categoryItems[index];
+    let distance = item.left - (this.data.scrollWidth / 2 - item.width / 2);
     this.setData({
-      swiperIndex: index
+      swiperIndex: index,
+      scrollLeft: distance
     })
     if (this.data.articleList[index].datas.length > 0) {
       return

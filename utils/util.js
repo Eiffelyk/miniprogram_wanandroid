@@ -21,7 +21,29 @@ const toast = (title, icon = 'none') => {
   })
 }
 
+const getViewSize = selector => {
+  return new Promise((resolve, reject) => {
+    let query = wx.createSelectorQuery();
+    query.selectAll(selector).boundingClientRect();
+    query.selectViewport().scrollOffset();
+    query.exec(function (res) {
+      resolve(res[0])
+    });
+  })
+}
+const getViewSizeWidth = selector => {
+  return new Promise((resolve, reject) => {
+    let query = wx.createSelectorQuery();
+    query.selectAll(selector).boundingClientRect();
+    query.selectViewport().scrollOffset();
+    query.exec(function (res) {
+      resolve(res[0].width)
+    });
+  })
+}
 module.exports = {
   formatTime: formatTime,
-  toast: toast
+  toast: toast,
+  getViewSize: getViewSize,
+  getViewSizeWidth: getViewSizeWidth
 }
