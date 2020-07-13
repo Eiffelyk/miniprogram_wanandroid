@@ -1,2 +1,14 @@
 <!--pages/nav/nav.wxml-->
-<text>pages/nav/nav.wxml</text>
+<main-navi title="导航"></main-navi>
+<view class="page">
+	<scroll-view class="left" style="height:{{scrollHeight}}px" scroll-y="true">
+		<view class="item {{index==selectIndex?'item-active':''}}" wx:for="{{naviList}}" wx:key="index" data-index="{{index}}" bindtap="onLeftItemClick">
+			<view class="{{index==selectIndex?'content-active':''}}">{{item}}</view>
+		</view>
+	</scroll-view>
+	<scroll-view class="right" style="height:{{scrollHeight}}px" scroll-y="true">
+		<view class="content">
+			<view class="item" wx:for="{{websites}}" wx:key="index" data-link="{{item.index}}" bindtap="onRightItemClick" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">{{item.title}}</view>
+		</view>
+	</scroll-view>
+</view>

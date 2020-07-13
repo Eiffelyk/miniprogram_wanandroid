@@ -1,21 +1,25 @@
 const wxRequest = require('../utils/wxRequest.js');
 const util = require('./util.js');
-//首页banner 
-let banner = () => wxRequest.get('/banner/json');
-//首页文章列表
-let articleList=(pageIndex)=>wxRequest.get(`/article/list/${pageIndex}/json`);
-//获取公众号列表
-let chapter = () => wxRequest.get('/wxarticle/chapters/json');
-//查看某个公众号历史数据｜｜在某个公众号中搜索历史文章
-let chapterArticles = (chapterId, pageCurrent, params) => wxRequest.get(`/wxarticle/list/${chapterId}/${pageCurrent}/json`, params);
 //登录
 let login = (params) => wxRequest.post('/user/login', params);
 //退出
 let logout = () => wxRequest.get('/user/logout/json');
 //注册
 let register = (params) => wxRequest.post('/user/register', params);
+//首页banner 
+let banner = () => wxRequest.get('/banner/json');
+//首页文章列表
+let articleList = (pageIndex) => wxRequest.get(`/article/list/${pageIndex}/json`);
 //体系
 let tree = () => wxRequest.get('/tree/json');
+//导航
+let navi = () => wxRequest.get('/navi/json');
+// 热门网站
+let hotWeb =()=>wxRequest.get('/friend/json');
+//获取公众号列表
+let chapter = () => wxRequest.get('/wxarticle/chapters/json');
+//查看某个公众号历史数据｜｜在某个公众号中搜索历史文章
+let chapterArticles = (chapterId, pageCurrent, params) => wxRequest.get(`/wxarticle/list/${chapterId}/${pageCurrent}/json`, params);
 //收藏站内文章
 let collectMe = (id) => wxRequest.post(`/lg/collect/${id}/json`);
 //收藏站外文章
@@ -101,4 +105,6 @@ module.exports = {
   chapterArticles,
   doCollect,
   collectList,
+  navi,
+  hotWeb,
 }

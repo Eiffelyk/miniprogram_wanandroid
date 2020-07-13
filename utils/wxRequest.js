@@ -26,7 +26,7 @@ function request(method, url, param, isShowLoading) {
           })
         }
         console.log('接口：' + url, ' 参数：', param, '\n返回值：', res.data)
-        console.log(res.header)
+        // console.log(res.header)
         if (isShowLoading) {
           wx.hideLoading();
         }
