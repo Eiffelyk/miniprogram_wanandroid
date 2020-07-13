@@ -104,7 +104,7 @@ Page({
         })
       })
       this.data.naviData.unshift({
-        articles:list
+        articles: list
       })
       this.setData({
         websites: this.data.naviData[this.data.selectIndex].articles

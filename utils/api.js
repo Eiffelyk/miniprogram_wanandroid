@@ -12,10 +12,12 @@ let banner = () => wxRequest.get('/banner/json');
 let articleList = (pageIndex) => wxRequest.get(`/article/list/${pageIndex}/json`);
 //体系
 let tree = () => wxRequest.get('/tree/json');
+//某体系下文章
+let treeList = (pageIndex, params) => wxRequest.get(`/article/list/${pageIndex}/json`, params)
 //导航
 let navi = () => wxRequest.get('/navi/json');
 // 热门网站
-let hotWeb =()=>wxRequest.get('/friend/json');
+let hotWeb = () => wxRequest.get('/friend/json');
 //获取公众号列表
 let chapter = () => wxRequest.get('/wxarticle/chapters/json');
 //查看某个公众号历史数据｜｜在某个公众号中搜索历史文章
@@ -107,4 +109,5 @@ module.exports = {
   collectList,
   navi,
   hotWeb,
+  treeList,
 }

@@ -1,2 +1,20 @@
 <!--pages/tree/treeDetail/treeDetail.wxml-->
-<text>pages/tree/treeDetail/treeDetail.wxml</text>
+<wxs src="../../../utils/wxs/util.wxs" module="util" />
+<scroll-view class="category" scroll-x="true" scroll-with-animation="true" scroll-left="{{scrollLeft}}">
+	<view class="item {{index==swiperIndex?'active':''}}" wx:for="{{categoryList}}" wx:key="index" catchtap="tabItemClick" data-index="{{index}}">{{item.name}}</view>
+</scroll-view>
+<swiper class="project-group" current="{{swiperIndex}}" bindchange="onSwiperChange">
+	<swiper-item wx:for="{{articleList}}" wx:key="index">
+		<scroll-view class="list" scroll-y="true" bindscrolltolower="onLoadMore" scroll-anchoring="true">
+			<view class="article" wx:for="{{item.datas}}" wx:key="index" bindtap="onItemClick" data-link="{{item.link}}" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">
+				<view class="title">{{util.filterTag(item.title)}}</view>
+				<view class="bottom">
+					<text class="type" wx:if="{{item.tags.length>0}}">{{item.tags[0].name}}</text>
+					<text class="author" wx:if="{{item.author!=''}}">{{item.author}}</text>
+					<text class="date">{{item.niceDate}}</text>
+				</view>
+				<image class="collect" src="{{item.collect?'../../../images/like_fill.png':'../../../images/like.png'}}" catchtap="onClickCollect" data-id="{{item.id}}" data-collect="{{item.collect}}" data-index="{{index}}"></image>
+			</view>
+		</scroll-view>
+	</swiper-item>
+</swiper>

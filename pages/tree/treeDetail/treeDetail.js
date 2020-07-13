@@ -1,12 +1,20 @@
+const api = require("../../../utils/api");
+const util = require("../../../utils/util");
+
 // pages/tree/treeDetail/treeDetail.js
 Page({
-
+  // categoryList:[{id,name}]
+  // articleList:[{datas:[],curPage,pageCount}]
   /**
    * 页面的初始数据
    */
   data: {
-    categoryList:[],
-    articleList:[]
+    categoryItems: [],
+    scrollWidth: 0,
+    categoryList: [],
+    swiperIndex: 0,
+    articleList: [],
+    scrollLeft: 0
   },
 
   /**
@@ -19,15 +27,15 @@ Page({
     let categoryList = JSON.parse(decodeURIComponent(options.categoryList))
     categoryList.forEach(item => {
       this.data.articleList.push({
-        data:[],
-        curPage:0
+        datas: [],
+        curPage: 0
       })
     });
     this.setData({
-      categoryList:categoryList,
-      articleList:this.data.articleList
+      categoryList: categoryList,
+      articleList: this.data.articleList
     })
-    //todo get articleList
+    this.getArticleList()
   },
 
   /**
@@ -77,5 +85,63 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getArticleList: function () {
+    let index = this.data.swiperIndex
+    let cid = this.data.categoryList[index].id
+    let pageIndex = this.data.articleList[index].curPage
+    api.treeList(pageIndex, {
+      cid: cid
+    }).then(data => {
+      this.saveArticleList(index, data)
+    })
+  },
+  saveArticleList: function (index, data) {
+    this.data.articleList[index].datas.push(...data.datas);
+    this.data.articleList[index].curPage = data.curPage
+    this.data.articleList[index].pageCount = data.pageCount
+    let key = 'articleList[' + index + ']'
+    this.setData({
+      [key]: this.data.articleList[index]
+    })
+  },
+  tabItemClick: function (event) {
+    let index = event.currentTarget.dataset.index
+    this.setData({
+      swiperIndex: index
+    })
+  },
+  onSwiperChange: function (event) {
+    let index = event.detail.current
+    this.setData({
+      swiperIndex: index
+    })
+    if (this.data.articleList[index].datas.length > 0) {
+      return
+    }
+    this.getArticleList()
+  },
+  onLoadMore: function () {
+    if (this.data.articleList[swiperIndex].curPage < this.data.articleList[swiperIndex].pageCount) {
+      this.getArticleList()
+    } else {
+      util.toast('no more')
+    }
+  },
+  onItemClick: function (event) {
+    let link = event.currentTarget.dataset.link
+    util.toast('item click')
+  },
+  onClickCollect: function (event) {
+    // id,index,collect
+    let id = event.currentTarget.dataset.id
+    let index = event.currentTarget.dataset.index
+    let isCollect = event.currentTarget.dataset.collect
+    let key = 'articleList[' + this.data.swiperIndex + '].datas[' + index + '].collect';
+    api.doCollect(id, null, isCollect).then(data => {
+      this.setData({
+        [key]: !isCollect
+      })
+    })
   }
 })

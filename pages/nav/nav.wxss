@@ -1,12 +1,14 @@
 /* pages/nav/nav.wxss */
-.page{
+.page {
   display: flex;
 }
-.left{
+
+.left {
   width: 200rpx;
   background-color: white;
 }
-.left .item{
+
+.left .item {
   height: 90rpx;
   border-bottom: 1rpx #bfbfbf solid;
   border-right: 1rpx #bfbfbf solid;
@@ -15,23 +17,25 @@
   justify-content: center;
 }
 
-.left .item:last-child{
+.left .item:last-child {
   border-bottom: none;
 }
-.left .item-active{
+
+.left .item-active {
   border-right: none;
 }
 
-.left .item view{
+.left .item view {
   color: #2c2c2c;
   font-size: 28rpx;
   text-align: center;
 }
 
-.left .item .content-active{
+.left .item .content-active {
   border-left: 6rpx #fe6243 solid;
   color: #fe6243;
 }
+
 .right {
   flex: 1;
   background-color: white;
