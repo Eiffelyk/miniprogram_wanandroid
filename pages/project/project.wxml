@@ -1,2 +1,25 @@
 <!--pages/project/project.wxml-->
-<text>pages/project/project.wxml</text>
+<wxs src="../../utils/wxs/util.wxs" module="util" />
+<main-navi title="项目"></main-navi>
+<scroll-view class="category" scroll-x="true" scroll-left="{{scrollLeft}}" scroll-with-animation="true">
+  <view class="item {{index==swiperIndex?'active':''}}" wx:for="{{scrollList}}" wx:key="index" catchtap="onTabItemClick" data-index="{{index}}">{{util.charConvert(item.name)}}</view>
+</scroll-view>
+<swiper class="project-group" current="{{swiperIndex}}" bindchange="onSwiperChange">
+  <swiper-item wx:for="{{articleList}}" wx:key="index">
+    <scroll-view class="list" scroll-y="true" bindscrolltolower="onLoadMore" scroll-anchoring="true">
+      <!-- 列表实体 -->
+      <view class="project" wx:for="{{item.datas}}" wx:key="index" bindtap="onItemClick" data-link="{{item.link}}" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">
+        <image class="pic" src="{{item.envelopePic}}"></image>
+        <view class="content">
+          <text class="title">{{util.filterTag(item.title)}}</text>
+          <text class="desc">{{util.filterTag(item.desc)}}</text>
+          <view class="bottom">
+            <text class="author">{{item.author}}</text>
+            <text class="date">{{item.niceDate}}</text>
+          </view>
+          <image class="collect" src="{{item.collect?'../../images/like_fill.png':'../../images/like.png'}}" catchtap="onClickCollect" data-id="{{item.id}}" data-collect="{{item.collect}}" data-index="{{index}}"></image>
+			</view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

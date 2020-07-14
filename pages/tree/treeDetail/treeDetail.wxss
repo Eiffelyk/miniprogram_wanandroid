@@ -5,31 +5,3 @@ page {
   flex-direction: column;
 }
 
-.category {
-  height: 60rpx;
-  white-space: nowrap;
-  background: #f4f4f4;
-}
-
-.category .item {
-  line-height: 56rpx;
-  margin: 0 24rpx;
-  color: #8a8a8a;
-  font-size: 28rpx;
-  display: inline-block;
-}
-
-.category .active {
-  border-bottom: 5rpx #fe6243 solid;
-  color: #fe6243;
-}
-
-.project-group {
-  flex: 1;
-}
-
-.list {
-  height: 100%;
-  background-color: white;
-  -webkit-overflow-scrolling: touch;
-}

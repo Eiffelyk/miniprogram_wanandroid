@@ -2,7 +2,11 @@ var filterTag = function (content) {
   var reg = getRegExp('<[^>]+>|&\w+;', 'g')
   return content.replace(reg, '').trim()
 }
-
+var charConvert = function (params) {
+  var reg = getRegExp('&amp;', 'g')
+  return params.replace(reg, '&')
+}
 module.exports = {
   filterTag: filterTag,
+  charConvert: charConvert
 }

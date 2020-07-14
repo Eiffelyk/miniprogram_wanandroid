@@ -10,6 +10,12 @@ let register = (params) => wxRequest.post('/user/register', params);
 let banner = () => wxRequest.get('/banner/json');
 //首页文章列表
 let articleList = (pageIndex) => wxRequest.get(`/article/list/${pageIndex}/json`);
+//项目分类
+let project=() =>wxRequest.get('/project/tree/json');
+//项目最新
+let projectHot =(pageIndex)=>wxRequest.get(`/article/listproject/${pageIndex}/json`)
+//项目列表
+let projectList=(curPage,params)=>wxRequest.get(`/project/list/${curPage}/json`,params)
 //体系
 let tree = () => wxRequest.get('/tree/json');
 //某体系下文章
@@ -110,4 +116,7 @@ module.exports = {
   navi,
   hotWeb,
   treeList,
+  project,
+  projectList,
+  projectHot,
 }
