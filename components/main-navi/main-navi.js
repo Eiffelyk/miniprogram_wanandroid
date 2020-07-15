@@ -30,7 +30,9 @@ Component({
       })
     },
     toSearch:function(){
-
+      wx.navigateTo({
+        url: '../../pages/search/search',
+      })
     }
   },
   pageLifetimes: {

@@ -1,0 +1,44 @@
+<!--pages/search/search.wxml-->
+<wxs src="../../utils/wxs/util.wxs" module="util" />
+<view class="top">
+	<view class="search">
+		<image src="../../images/search2.png"></image>
+		<input maxlength="20" bindinput="inputChange" bindconfirm="confirmSearch" placeholder="输入关键字，多个用空格隔开" confirm-type="search" value="{{inputText}}"></input>
+		<image class="clear" src="../../images/delete.png" bindtap="onClickClear" wx:if="{{inputText.length>0}}"></image>
+	</view>
+	<view class="cancle" bindtap="onClickCancle" wx:if="{{showResult}}">取消</view>
+</view>
+<view class="empty-top"></view>
+<view wx:if="{{!showResult}}">
+	<view class="group" wx:if="{{searchHistories.length>0}}">
+		<view>
+			<text class="type-title">搜索记录</text>
+			<text class="type-clear" bindtap="onHistoryClearClick">清空记录</text>
+		</view>
+		<view class="history">
+			<view class="item" wx:for="{{searchHistories}}" wx:key="index" bindtap="onHistoryItemClick" data-key="{{item}}" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">{{item}}</view>
+		</view>
+	</view>
+</view>
+<view class="line" wx:if="{{searchHistories.length>0}}"></view>
+<view wx:if="{{!showResult}}">
+	<view class="group" wx:if="{{hotKeys.length>0}}">
+		<text class="type-title">热门搜索</text>
+		<view class="hotkey">
+			<view class="item" wx:for="{{hotKeys}}" wx:key="index" bindtap="onHistoryItemClick" data-key="{{item.name}}" hover-class="item-hover" hover-start-time="0" hover-stay-time="200">{{item.name}}</view>
+		</view>
+	</view>
+</view>
+<view wx:if="{{showResult}}">
+  <block>
+    <view class="article" wx:for="{{resultList}}" wx:key="index" bindtap="onResultItemClick" hover-class="item-hover" hover-start-time="0" hover-stay-time="200" data-link="{{item.link}}">
+      <text class="title">{{util.filterTag(item.title)}}</text>
+      <view class="bottom">
+        <text class="type" wx:if="{{item.tags.length>0}}">{{item.tags[0].name}}</text>
+        <text class="author" wx:if="{{item.author!=''}}">{{item.author}}</text>
+        <text class="date">{{item.niceDate}}</text>
+      </view>
+      <image class="collect" src="{{item.collect?'../../images/like_fill.png':'../../images/like.png'}}" data-id="{{item.id}}" data-collect="{{item.collect}}" data-index="{{index}}" catchtap="onCollect"></image>
+    </view>
+  </block>
+</view>
